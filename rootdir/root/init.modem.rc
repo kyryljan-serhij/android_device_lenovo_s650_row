@@ -115,7 +115,6 @@ service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
 #
 #  Modem related services (End)
 #
-#  moonrotation xda cm12
 
 #Add by vend_hp.chen for 
 #
