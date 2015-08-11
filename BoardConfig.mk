@@ -1,6 +1,9 @@
 # inherit from the proprietary version
 -include vendor/wiko/rainbow/BoardConfigVendor.mk
 
+# GPS
+TARGET_SPECIFIC_HEADER_PATH := device/wiko/rainbow/include
+
 # Board
 TARGET_BOARD_PLATFORM := mt6582
 TARGET_NO_BOOTLOADER := true
