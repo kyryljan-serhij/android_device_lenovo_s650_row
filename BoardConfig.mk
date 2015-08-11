@@ -4,30 +4,30 @@
 # GPS
 TARGET_SPECIFIC_HEADER_PATH := device/wiko/rainbow/include
 
-# Board
+# Platform
 TARGET_BOARD_PLATFORM := mt6582
 TARGET_NO_BOOTLOADER := true
+
+# Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_ARCH_VARIANT_CPU := cortex-a7
-ARCH_ARM_HAVE_VFP := true
-ARCH_ARM_HAVE_NEON := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := cortex-a7
+
+TARGET_LDPRELOAD := /system/lib/libxlog.so
+
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_BOOTLOADER_BOARD_NAME := rainbow
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := mt6582
 
 # MTK Hardware
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
 COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
-
-BOARD_GPS_LIBRARIES := true
 
 # Partitions
 # make_ext4fs requires numbers in dec format
@@ -56,6 +56,7 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 TARGET_PREBUILT_KERNEL := device/wiko/rainbow/kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/wiko/rainbow/bootimg.mk
 BOARD_MKBOOTIMG_ARGS := --board 1336460062
+BOARD_CUSTOM_BOOTIMG := true
 #TARGET_PREBUILT_RECOVERY_KERNEL :=
 
 TARGET_RECOVERY_FSTAB := device/wiko/rainbow/rootdir/root/twrp.fstab
@@ -84,9 +85,6 @@ TW_INCLUDE_FB2PNG := true
 WITH_DEXPREOPT := false
 DISABLE_DEXPREOPT := true
 
-#Camera
-USE_CAMERA_STUB := true
-
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
@@ -98,6 +96,7 @@ BOARD_EGL_CFG := device/wiko/rainbow/rootdir/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
+# Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
 # SELINUX

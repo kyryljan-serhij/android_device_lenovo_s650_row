@@ -33,7 +33,7 @@ $BB mount --bind -o ro /tmp/cmdline /proc/cmdline
 $BB echo "Umount DATA"
 $BB umount -f /data
 
-$BB echo "Finish.."
+$BB echo "Starting init.."
 $BB chmod 755 /init2
 $BB mv /init2 /init
 exec /init
