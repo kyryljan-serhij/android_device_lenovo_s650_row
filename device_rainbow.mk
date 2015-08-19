@@ -8,7 +8,7 @@ $(call inherit-product-if-exists, vendor/wiko/rainbow/rainbow-vendor.mk)
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
-DEVICE_PACKAGE_OVERLAYS += device/wiko/rainbow/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 LOCAL_PATH := device/wiko/rainbow
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -48,18 +48,18 @@ PRODUCT_PACKAGES += \
 
 # KEYLAYOUT
 PRODUCT_COPY_FILES += \
-    device/wiko/rainbow/rootdir/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
+    $(LOCAL_PATH)/rootdir/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
 
 # RAMDISK
 PRODUCT_COPY_FILES += \
-    device/wiko/rainbow/rootdir/root//sbin/busybox:root/sbin/busybox \
-    device/wiko/rainbow/rootdir/root/fstab.mt6582:root/fstab.mt6582 \
-    device/wiko/rainbow/rootdir/root/init.mt6582.rc:root/init.mt6582.rc \
-    device/wiko/rainbow/rootdir/root/init.modem.rc:root/init.modem.rc \
-    device/wiko/rainbow/rootdir/root/init.mt6582.usb.rc:root/init.mt6582.usb.rc \
-    device/wiko/rainbow/rootdir/root/init.recovery.mt6582.rc:root/init.recovery.mt6582.rc \
-    device/wiko/rainbow/rootdir/root/init.xlog.rc:root/init.xlog.rc \
-    device/wiko/rainbow/rootdir/root/ueventd.mt6582.rc:root/ueventd.mt6582.rc \
+    $(LOCAL_PATH)/rootdir/root//sbin/busybox:root/sbin/busybox \
+    $(LOCAL_PATH)/rootdir/root/fstab.mt6582:root/fstab.mt6582 \
+    $(LOCAL_PATH)/rootdir/root/init.mt6582.rc:root/init.mt6582.rc \
+    $(LOCAL_PATH)/rootdir/root/init.fuse.rc:root/init.fuse.rc \
+    $(LOCAL_PATH)/rootdir/root/init.modem.rc:root/init.modem.rc \
+    $(LOCAL_PATH)/rootdir/root/init.mt6582.usb.rc:root/init.mt6582.usb.rc \
+    $(LOCAL_PATH)/rootdir/root/init.recovery.mt6582.rc:root/init.recovery.mt6582.rc \
+    $(LOCAL_PATH)/rootdir/root/ueventd.mt6582.rc:root/ueventd.mt6582.rc \
     $(LOCAL_KERNEL):kernel
 
 # PERMISSIONS
@@ -89,9 +89,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
     $(LOCAL_PATH)/rootdir/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/rootdir/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     $(LOCAL_PATH)/rootdir/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # HOSTAPD
@@ -104,10 +105,17 @@ $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
     ro.secure=0 \
+    ro.adb.secure=0 \
     ro.allow.mock.location=1 \
     ro.debuggable=1 \
     ro.zygote=zygote32 \
-    persist.sys.usb.config=mtp,adb
+    persist.sys.usb.config=mtp
+
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.adb.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_rainbow
