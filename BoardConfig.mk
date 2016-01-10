@@ -1,8 +1,8 @@
 # inherit from the proprietary version
--include vendor/wiko/rainbow/BoardConfigVendor.mk
+-include vendor/lenovo/s650_row/BoardConfigVendor.mk
 
 # GPS
-TARGET_SPECIFIC_HEADER_PATH := device/wiko/rainbow/include
+TARGET_SPECIFIC_HEADER_PATH := device/lenovo/s650_row/include
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6582
@@ -32,9 +32,9 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 # Partitions
 # make_ext4fs requires numbers in dec format
 BOARD_BOOTIMAGE_PARTITION_SIZE := 6291456
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8629568
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 891289600
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 12582912
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 6188302336
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_USERIMAGES_USE_EXT4:=true
@@ -53,18 +53,18 @@ TARGET_KMODULES := true
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
-TARGET_PREBUILT_KERNEL := device/wiko/rainbow/kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/wiko/rainbow/bootimg.mk
+TARGET_PREBUILT_KERNEL := device/lenovo/s650_row/kernel
+BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/s650_row/bootimg.mk
 BOARD_MKBOOTIMG_ARGS := --board 1336460062
 BOARD_CUSTOM_BOOTIMG := true
 #TARGET_PREBUILT_RECOVERY_KERNEL :=
 
-TARGET_RECOVERY_FSTAB := device/wiko/rainbow/rootdir/root/twrp.fstab
+TARGET_RECOVERY_FSTAB := device/lenovo/s650_row/rootdir/root/twrp.fstab
 
 # TWRP
-DEVICE_RESOLUTION := 720x1280
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
+DEVICE_RESOLUTION := 540x960
+TARGET_SCREEN_HEIGHT := 960
+TARGET_SCREEN_WIDTH := 540
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
@@ -89,10 +89,10 @@ DISABLE_DEXPREOPT := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/wiko/rainbow/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lenovo/s650_row/bluetooth
 
 # EGL settings
-BOARD_EGL_CFG := device/wiko/rainbow/rootdir/configs/egl.cfg
+BOARD_EGL_CFG := device/lenovo/s650_row/rootdir/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
@@ -101,7 +101,7 @@ TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
 # SELINUX
 BOARD_SEPOLICY_DIRS := \
-       device/wiko/rainbow/sepolicy
+       device/lenovo/s650_row/sepolicy
 
 BOARD_SEPOLICY_UNION := \
        device.te \
@@ -113,7 +113,7 @@ BOARD_SEPOLICY_UNION := \
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/wiko/rainbow/ril/
+BOARD_RIL_CLASS := ../../../device/lenovo/s650_row/ril/
 
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_CONNECTIVITY_MODULE := conn_soc

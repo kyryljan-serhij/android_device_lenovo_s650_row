@@ -4,13 +4,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/wiko/rainbow/rainbow-vendor.mk)
+$(call inherit-product-if-exists, vendor/lenovo/s650_row/s650_row-vendor.mk)
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-LOCAL_PATH := device/wiko/rainbow
+LOCAL_PATH := device/lenovo/s650_row
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
@@ -118,10 +118,10 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.debuggable=1
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_rainbow
-PRODUCT_DEVICE := rainbow
+PRODUCT_NAME := full_S650_ROW
+PRODUCT_DEVICE := S650_ROW
 
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
+TARGET_SCREEN_HEIGHT := 960
+TARGET_SCREEN_WIDTH := 540
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)

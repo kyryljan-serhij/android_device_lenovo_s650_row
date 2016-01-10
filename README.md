@@ -18,17 +18,17 @@
         
         # source build/envsetup.sh
         
-        # lunch cm_rainbow-eng
+        # lunch cm_S650_ROW-eng
 
 * recoveries
 
-        # . build/tools/device/makerecoveries.sh cm_rainbow-eng
+        # . build/tools/device/makerecoveries.sh cm_S650_ROW-eng
     
         # mka bootimage
 
 * full build
 
-        # brunch cm_rainbow-eng
+        # brunch cm_S650_ROW-eng
 
 # MTK
 

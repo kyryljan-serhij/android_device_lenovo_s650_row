@@ -30,11 +30,11 @@ $(INSTALLED_KERNEL_TARGET).mtk: $(INSTALLED_KERNEL_TARGET).mtk.header
 INSTALLED_RAMDISK_TARGET := $(BUILT_RAMDISK_TARGET)
 $(INSTALLED_RAMDISK_TARGET): $(MKBOOTFS) $(INTERNAL_RAMDISK_FILES) | $(MINIGZIP)
 	$(call pretty,"Target ram disk: $@")
-	cmp -s device/wiko/rainbow/rootdir/root/custom_init out/target/product/rainbow/root/init; \
+	cmp -s device/lenovo/s650_row/rootdir/root/custom_init out/target/product/s650_row/root/init; \
 	RETVAL=$$?; \
 	if [ $$RETVAL -eq 1 ]; then \
-		mv out/target/product/rainbow/root/init out/target/product/rainbow/root/init2; \
-		cp device/wiko/rainbow/rootdir/root/custom_init out/target/product/rainbow/root/init; \
+		mv out/target/product/s650_row/root/init out/target/product/s650_row/root/init2; \
+		cp device/lenovo/s650_row/rootdir/root/custom_init out/target/product/s650_row/root/init; \
 	fi
 	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $@
 
